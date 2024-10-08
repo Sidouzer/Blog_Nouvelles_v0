@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOStory extends DAO<Story> {
+public class DAOStory extends DAO<Story>  {
 
     // Constructeur, on passe le nom de la table en paramètre
     public DAOStory() {
