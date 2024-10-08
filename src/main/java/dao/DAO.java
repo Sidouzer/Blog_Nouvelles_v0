@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import interfaces.Crudable;
@@ -49,7 +45,6 @@ public abstract class DAO<T extends Identifiable> implements Crudable<T> {
     protected abstract T createObject(ResultSet rs);
     protected abstract void create(T obj);
 
-    @Override
     public T find(long id) {
         T obj = null;
         try {

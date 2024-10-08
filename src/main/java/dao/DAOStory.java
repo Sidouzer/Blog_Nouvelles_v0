@@ -22,7 +22,7 @@ public class DAOStory extends DAO<Story> {
         Story story = null;
         try {
             story = new Story();
-            story.setId_story(rs.getLong("id_story"));
+            story.setId(rs.getLong("id_story"));
             story.setTitle(rs.getString("title"));
             story.setContent(rs.getString("content"));
             story.setCreated(rs.getDate("created").toLocalDate());
@@ -54,7 +54,7 @@ public class DAOStory extends DAO<Story> {
             ResultSet rs = pstmt.getGeneratedKeys();
             if (rs.next()) {
                 long lastInsertedId = rs.getLong(1);
-                story.setId_story(lastInsertedId); // On assigne l'ID généré à l'objet Story
+                story.setId(lastInsertedId); // On assigne l'ID généré à l'objet Story
             }
         } catch (SQLException ex) {
             Logger.getLogger(DAOStory.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,12 +73,17 @@ public class DAOStory extends DAO<Story> {
             pstmt.setString(2, story.getContent());
             pstmt.setDate(3, Date.valueOf(story.getCreated()));
             pstmt.setLong(4, story.getId_person());
-            pstmt.setLong(5, story.getId_story());
+            pstmt.setLong(5, story.getId());
 
             // Exécution de la requête de mise à jour
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DAOStory.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public Story find(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
