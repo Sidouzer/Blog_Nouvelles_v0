@@ -5,8 +5,7 @@
 package dao;
 
 import beans.Person;
-import jakarta.resource.cci.ResultSet;
-import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;

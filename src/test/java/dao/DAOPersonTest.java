@@ -17,7 +17,15 @@ public class DAOPersonTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testCreateObject() {
+    }
+
+    @Test
+    public void testCreate() {
+    }
+
+    @Test
+    public void testUpdate() {
     }
     
 }
