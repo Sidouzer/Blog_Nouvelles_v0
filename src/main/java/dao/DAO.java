@@ -50,7 +50,7 @@ public abstract class DAO<T extends Identifiable> implements Crudable<T> {
     protected abstract void create(T obj);
 
     @Override
-    public T find(long id) {
+    public T find(Long id) {
         T obj = null;
         try {
             String req = "SELECT * FROM " + table + " WHERE id = ?";

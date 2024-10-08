@@ -3,11 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
-
 /**
- *
- * @author stag
+ * 
+ * @author Caroline Casteras
+ * @param <T> 
  */
-public interface Crudable {
+public interface Crudable<T> {
     
+    public abstract T find(Long id);
+
+    public abstract void persist(T obj);
+
+    public abstract void delete(T obj);
 }
