@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public abstract class DAO<T extends Identifiable> implements Crudable<T> {
 
-    protected Connection connection = MariaDBConnection.getInstance();
+    protected Connection connection = MariaDbConnection.getInstance();
     protected String table;
 
     public DAO(String table) {
@@ -45,12 +45,13 @@ public abstract class DAO<T extends Identifiable> implements Crudable<T> {
         }
     }
 
+    protected abstract void update(T obj);
     //fabrique du bean à partir d'un enregistrement de la DB
     protected abstract T createObject(ResultSet rs);
     protected abstract void create(T obj);
 
     @Override
-    public T find(long id) {
+    public T find(Long id) {
         T obj = null;
         try {
             String req = "SELECT * FROM " + table + " WHERE id = ?";
@@ -85,8 +86,6 @@ public abstract class DAO<T extends Identifiable> implements Crudable<T> {
             Logger.getLogger(DAOPerson.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    protected abstract void update(T obj);
 
     //retourne tous les enregistrements de la table
     public Collection<T> all() {

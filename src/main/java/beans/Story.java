@@ -15,7 +15,7 @@ public class Story {
     private String title;
     private String content;
     private LocalDate created;
-    private Long id_person;
+    private long id_person;
 
     public Long getId_story() {
         return id_story;
@@ -49,11 +49,11 @@ public class Story {
         this.created = created;
     }
 
-    public Long getId_person() {
+    public long getId_person() {
         return id_person;
     }
 
-    public void setId_person(Long id_person) {
+    public void setId_person(long id_person) {
         this.id_person = id_person;
     }
 
@@ -61,5 +61,5 @@ public class Story {
     public String toString() {
         return "Story{" + "id_story=" + id_story + ", title=" + title + ", content=" + content + ", created=" + created + ", id_person=" + id_person + '}';
     }
-    
+
 }

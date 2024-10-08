@@ -8,6 +8,7 @@ package interfaces;
  *
  * @author stag
  */
-public interface Crudable {
-    
+public interface Crudable<T> {
+
+
 }
