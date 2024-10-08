@@ -114,6 +114,4 @@ public abstract class DAO<T extends Identifiable> implements Crudable<T> {
         }
         return count;
     }
-
-
 }
