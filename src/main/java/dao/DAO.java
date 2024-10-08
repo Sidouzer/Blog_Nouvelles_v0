@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public abstract class DAO<T extends Identifiable> implements Crudable<T> {
 
-    protected Connection connection = MariaDBConnection.getInstance();
+    protected Connection connection = MariaDbConnection.getInstance();
     protected String table;
 
     public DAO(String table) {
