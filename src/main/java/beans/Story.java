@@ -15,7 +15,7 @@ public class Story {
     private String title;
     private String content;
     private LocalDate created;
-    private Long id_person;
+    private long id_person;
 
     public Long getId_story() {
         return id_story;
@@ -53,7 +53,7 @@ public class Story {
         return id_person;
     }
 
-    public void setId_person(Long id_person) {
+    public void setId_person(long id_person) {
         this.id_person = id_person;
     }
 

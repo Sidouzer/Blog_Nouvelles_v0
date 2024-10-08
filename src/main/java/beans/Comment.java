@@ -15,8 +15,8 @@ public class Comment {
     private String content;
     private LocalDate created;
     private int status;
-    private Long id_person;
-    private Long id_story;
+    private long id_person;
+    private long id_story;
 
     public String getTitle() {
         return title;
@@ -50,19 +50,19 @@ public class Comment {
         this.status = status;
     }
 
-    public Long getId_person() {
+    public long getId_person() {
         return id_person;
     }
 
-    public void setId_person(Long id_person) {
+    public void setId_person(long id_person) {
         this.id_person = id_person;
     }
 
-    public Long getId_story() {
+    public long getId_story() {
         return id_story;
     }
 
-    public void setId_story(Long id_story) {
+    public void setId_story(long id_story) {
         this.id_story = id_story;
     }
 
