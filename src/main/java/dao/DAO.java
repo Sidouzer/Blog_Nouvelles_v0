@@ -45,7 +45,8 @@ public abstract class DAO<T extends Identifiable> implements Crudable<T> {
     protected abstract T createObject(ResultSet rs);
     protected abstract void create(T obj);
 
-    public T find(long id) {
+    @Override
+    public T find(Long id) {
         T obj = null;
         try {
             String req = "SELECT * FROM " + table + " WHERE id = ?";
