@@ -3,11 +3,3 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package work;
-
-/**
- *
- * @author stag
- */
-public class ApplicationListener {
-    
-}

@@ -53,7 +53,6 @@ public class Vote implements Identifiable {
 
     @Override
     public String toString() {
-        return "Vote{" + "id_person=" + id_person + ", id_story=" + id_story + ", quality=" + quality + '}';
+        return "Vote{" + "id=" + id + ", id_person=" + id_person + ", id_story=" + id_story + ", quality=" + quality + '}';
     }
-
 }
