@@ -12,7 +12,7 @@ import interfaces.Identifiable;
  */
 public class Vote implements Identifiable {
 
-    private long id;
+    private Long id;
     private long id_person;
     private long id_story;
     private int quality;

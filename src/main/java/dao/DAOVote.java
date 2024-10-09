@@ -1,4 +1,5 @@
 package dao;
+
 import beans.Vote;
 import dao.DAO;
 import java.sql.PreparedStatement;
