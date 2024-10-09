@@ -4,6 +4,9 @@
  */
 package dao;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -47,6 +50,18 @@ public final class MariaDbConnection {
             }
         }
         return connection;
+    }
+
+    private static Properties getConfig() {
+        Properties config = new Properties();
+        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties")) {
+            config.load(is);
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException("Fichier de paramétrage inexistant");
+        } catch (IOException ex) {
+            throw new RuntimeException("Fichier de paramétrage illisible");
+        }
+        return config;
     }
 
     //Ferme le singleton de connexion proprement.
