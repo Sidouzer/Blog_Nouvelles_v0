@@ -26,7 +26,7 @@ public class Vote implements Identifiable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public long getId_person() {
         return id_person;
     }
