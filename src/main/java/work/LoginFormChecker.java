@@ -21,7 +21,7 @@ public class LoginFormChecker extends FormChecker<Person> {
     
     @Override
     public Person checkForm() {
-        //récupére et stock les data
+        //récupère et stock les data
         String login = request.getParameter("login").trim();
         String pwd = request.getParameter("pwd");
         bean.setLogin(login);
@@ -57,5 +57,4 @@ public class LoginFormChecker extends FormChecker<Person> {
         }
         return bean;
     }
-    
 }
