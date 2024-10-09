@@ -1,7 +1,7 @@
 <%-- 
     Document   : profile
     Created on : 8 oct. 2024, 09:20:26
-    Author     : stag
+    Author     : Florine Pérabout
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,54 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Mon Profil</title>       
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="../jspf/header.jspf" %>
+        <fieldset>
+            <h2>Vos données personnelles</h2>
+            <div> Votre email : <c:url value="${sessionScope.person.login}"/></div>
+            </br>
+            <div> Votre nom : ${empty sessionScope.person ? "&lt;aucun&gt;" : sessionScope.person.name}</div>           
+        </fieldset>
+        
+        <fieldset>
+           <section id="nouvelles">
+            <h2>Mes nouvelles</h2>
+            <c:forEach 
+                items="${requestScope.story.id_person}" var="nouvelle">
+                <article>
+                    <h3>${story.title} ${requestScope.vote.quality}</h3>
+                    <div>Nouvelle créé le ${story.created}</div>
+                </article>
+                <a href="<c:url value='/personStories'>"> Toutes mes nouvelles</a> 
+            </c:forEach>                     
+        </section> 
+        </fieldset>
+                  
+        <form method="post" action="<c:url value='/profile'/>">                
+            <fieldset>
+                <div> Changer mon mot de passe </div>
+                <label for="oldPwd"><span class="mandatory"> Entrez votre mot de passe actuel *</span></label>
+                <input type="password" id="oldPwd" name="oldPwd" size="20" maxlength="20" />
+                <div class="error"> ${requestScope.errors.oldPwd.message}</div>
+                <br />
+                <label for="newPwd"> Nouveau mot de passe <span class="mandatory">*</span></label>
+                <input type="password" id="newPwd" name="newPwd" size="20" maxlength="20" />
+                <div class="error"> ${requestScope.errors.newPwd.message}</div>
+                <br />
+                <label for="confirm"> Confirmation du nouveau mot de passe <span class="mandatory">*</span></label>
+                <input type="password" id="confirm" name="confirm" size="20" maxlength="20" />
+                <div class="error"> ${requestScope.errors.confirm.message}</div>
+                <br />
+                <input type="submit" value="Modifier" class="noLabel" />
+            </fieldset>
+        </form>
+                
+        <fieldset>
+            <button type="submit" value="Supprimer mon compte"> Supprimer </button>
+        </fieldset>
+               
+        <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>
