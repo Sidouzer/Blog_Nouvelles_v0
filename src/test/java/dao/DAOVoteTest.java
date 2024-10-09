@@ -9,15 +9,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author stag
+ * @author Anglade Julien
  */
-public class DAOAdminTest {
-    
-    public DAOAdminTest() {
+public class DAOVoteTest {
+
+    public DAOVoteTest() {
     }
 
-    @Test
-    public void testSomeMethod() {
-    }
-    
 }
+//    @Test
+//    public void testCreateObject() {
+//    }
+//
+//    @Test
+//    public void testFind() {
+//    }
+//
+//    @Test
+//    public void testCreate() {
+//    }
+//
+//    @Test
+//    public void testUpdate() {
+//    }
+
