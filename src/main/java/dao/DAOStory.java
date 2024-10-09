@@ -35,7 +35,7 @@ public class DAOStory extends DAO<Story>  {
 
     // Méthode pour créer une nouvelle entrée dans la base de données
     @Override
-    protected void create(Story story) {
+    public void create(Story story) {
         try {
             String req = "INSERT INTO " + table
                 + " (title, content, created, id_person)"
