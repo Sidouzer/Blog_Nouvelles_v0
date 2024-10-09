@@ -9,6 +9,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+        <welcome-file>stories</welcome-file>
         <error-page>
             <error-code>403</error-code>
             <location>/WEB-INF/errors/error403.jsp</location>
