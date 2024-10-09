@@ -1,7 +1,7 @@
 <%-- 
     Document   : adminStories
     Created on : 8 oct. 2024, 09:19:42
-    Author     : stag
+    Author     : SID
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +15,7 @@
               href="<c:url value='/assets/css/style.css' />" />
     </head>
     <body>
-        <%@include file="../../jspf/headerBack.jspf" %>
+        <%@include file="../../jspf/adminHeader.jspf" %>
         
         <section id="admin-stories">
             <h2>Manage Short Stories</h2>

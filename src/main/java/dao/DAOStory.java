@@ -1,4 +1,4 @@
-package dao;
+package dao;   //SID
 
 import beans.Story;
 import java.sql.Date;
@@ -80,10 +80,5 @@ public class DAOStory extends DAO<Story>  {
         } catch (SQLException ex) {
             Logger.getLogger(DAOStory.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public Story find(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

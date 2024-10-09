@@ -1,7 +1,7 @@
 <%-- 
     Document   : story
     Created on : 8 oct. 2024, 09:21:18
-    Author     : stag
+    Author     : sid
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

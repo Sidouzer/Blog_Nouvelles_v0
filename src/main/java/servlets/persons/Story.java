@@ -1,4 +1,4 @@
-package servlets.persons;
+package servlets.persons;   //SID
 
 import dao.DAOFactory;
 import jakarta.servlet.ServletException;
@@ -31,6 +31,6 @@ public class Story extends HttpServlet {
         request.setAttribute("stories", stories);
 
         // Redirection vers la page JSP pour afficher les histoires
-        request.getRequestDispatcher("/jsp/story.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/story.jsp").forward(request, response);
     }
 }

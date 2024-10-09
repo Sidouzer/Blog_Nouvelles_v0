@@ -1,7 +1,7 @@
 <%-- 
     Document   : createStory
     Created on : 8 oct. 2024, 09:21:27
-    Author     : stag
+    Author     : sid
 --%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
