@@ -11,13 +11,21 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author stag
  */
-public class DAOUserTest {
+public class DAOPersonTest {
     
-    public DAOUserTest() {
+    public DAOPersonTest() {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testCreateObject() {
+    }
+
+    @Test
+    public void testCreate() {
+    }
+
+    @Test
+    public void testUpdate() {
     }
     
 }

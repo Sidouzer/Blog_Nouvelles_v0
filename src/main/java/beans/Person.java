@@ -1,26 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package beans;
+
+import interfaces.Identifiable;
 
 /**
  *
  * @author stag
  */
-public class Person {
-    private Long id_person;
+public class Person implements Identifiable{
+    private Long id;
     private String login;
     private String name;
     private String pwd;
     private int status;
 
-    public Long getId_person() {
-        return id_person;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_person(Long id_person) {
-        this.id_person = id_person;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -57,7 +55,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "id_person=" + id_person + ", login=" + login + ", name=" + name + ", pwd=" + pwd + ", status=" + status + '}';
-    }
-    
+        return "Person{" + "id_person=" + id + ", login=" + login + ", name=" + name + ", pwd=" + pwd + ", status=" + status + '}';
+    }    
 }

@@ -1,28 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package beans;
 
+import interfaces.Identifiable;
 import java.time.LocalDate;
 
 /**
  *
  * @author stag
  */
-public class Story {
-    private Long id_story;
+public class Story implements Identifiable {
+    private Long id;
     private String title;
     private String content;
     private LocalDate created;
-    private Long id_person;
+    private long id_person;
 
-    public Long getId_story() {
-        return id_story;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_story(Long id_story) {
-        this.id_story = id_story;
+    public void setId(Long id_story) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -49,17 +46,17 @@ public class Story {
         this.created = created;
     }
 
-    public Long getId_person() {
+    public long getId_person() {
         return id_person;
     }
 
-    public void setId_person(Long id_person) {
+    public void setId_person(long id_person) {
         this.id_person = id_person;
     }
 
     @Override
     public String toString() {
-        return "Story{" + "id_story=" + id_story + ", title=" + title + ", content=" + content + ", created=" + created + ", id_person=" + id_person + '}';
+        return "Story{" + "id_story=" + id + ", title=" + title + ", content=" + content + ", created=" + created + ", id_person=" + id_person + '}';
     }
-    
+
 }
