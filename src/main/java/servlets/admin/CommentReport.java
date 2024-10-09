@@ -14,9 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author stag
+ * @author Florine Pérabout
  */
-@WebServlet(name = "CommentReport", urlPatterns = {"/back/comment/report"})
+@WebServlet(name = "CommentReport", urlPatterns = {"/back/comments/report"})
 public class CommentReport extends HttpServlet {
 
     /**
