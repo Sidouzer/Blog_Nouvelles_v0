@@ -41,7 +41,6 @@
                             <td>${story.authorName}</td> <!-- Affichez le nom de l'auteur -->
                             <td>
                                 <a href="<c:url value='/back/delete/story?id=${story.id}' />">Delete</a>
-                                <a href="<c:url value='/back/editStory?id=${story.id}' />">Edit</a>
                             </td>
                         </tr>
                     </c:forEach>
