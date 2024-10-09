@@ -4,15 +4,29 @@
  */
 package beans;
 
+import interfaces.Identifiable;
+
 /**
  *
- * @author stag
+ * @author Julien Anglade
  */
-public class Vote {
+public class Vote implements Identifiable {
+
+    private Long id;
     private long id_person;
     private long id_story;
     private int quality;
 
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public long getId_person() {
         return id_person;
     }
@@ -39,7 +53,6 @@ public class Vote {
 
     @Override
     public String toString() {
-        return "Vote{" + "id_person=" + id_person + ", id_story=" + id_story + ", quality=" + quality + '}';
+        return "Vote{" + "id=" + id + ", id_person=" + id_person + ", id_story=" + id_story + ", quality=" + quality + '}';
     }
-    
 }

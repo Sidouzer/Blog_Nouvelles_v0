@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package beans;
 
+import interfaces.Identifiable;
 import java.time.LocalDate;
 
 /**
  *
  * @author stag
  */
-public class Comment {
+public class Comment implements Identifiable {
+    private Long id;
     private String title;
     private String content;
     private LocalDate created;
@@ -69,5 +67,15 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" + "title=" + title + ", content=" + content + ", created=" + created + ", status=" + status + ", id_person=" + id_person + ", id_story=" + id_story + '}';
+    }
+
+    @Override
+    public Long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
