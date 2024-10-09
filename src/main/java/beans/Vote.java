@@ -26,7 +26,7 @@ public class Vote implements Identifiable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public long getId_person() {
         return id_person;
     }
@@ -53,7 +53,6 @@ public class Vote implements Identifiable {
 
     @Override
     public String toString() {
-        return "Vote{" + "id_person=" + id_person + ", id_story=" + id_story + ", quality=" + quality + '}';
+        return "Vote{" + "id=" + id + ", id_person=" + id_person + ", id_story=" + id_story + ", quality=" + quality + '}';
     }
-
 }
