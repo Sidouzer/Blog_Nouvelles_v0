@@ -91,4 +91,21 @@ public class DAOPerson extends DAO<Person>{
             Logger.getLogger(DAOPerson.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public Person findByLogin(String login){
+        Person obj = null;
+        try {
+            String req = "SELECT * FROM " + table
+                + " WHERE login=?";
+            PreparedStatement pstmt = this.connection.prepareStatement(req);
+            pstmt.setString(1, login);
+            ResultSet result = pstmt.executeQuery();
+            if (result.next()) {
+                obj = createObject(result);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOPerson.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return obj;
+    }
 }

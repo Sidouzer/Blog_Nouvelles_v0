@@ -4,10 +4,58 @@
  */
 package work;
 
+import beans.Person;
+import dao.DAOFactory;
+import jakarta.servlet.http.HttpServletRequest;
+import tools.PasswordAuthentication;
+
 /**
  *
- * @author stag
+ * @author Caroline Casteras
  */
-public class LoginFormChecker {
+public class LoginFormChecker extends FormChecker<Person> {
+
+    public LoginFormChecker(HttpServletRequest request) {
+        super(request, new Person());
+    }
+    
+    @Override
+    public Person checkForm() {
+        //récupére et stock les data
+        String login = request.getParameter("login").trim();
+        String pwd = request.getParameter("pwd");
+        bean.setLogin(login);
+        bean.setPwd(pwd);
+        
+        //vérification relative à la conformité du remplissage des champs
+        //vérifie le login (mail)
+        try {
+            if (!login.contains("@")) {
+                throw new RuntimeException("Email invalide");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("login", ex);
+        }
+        //vérifie la longueur du pwd
+        try {
+            if (pwd.trim().length() < 3) {
+                throw new RuntimeException("Mot de passe trop court");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("pwd", ex);
+        }
+        
+        //vérification de l'existance d'un utilisateur : concordance du login et pwd
+        if (errors.isEmpty()) {
+            Person person = DAOFactory.getDAOPerson().findByLogin(login);
+            PasswordAuthentication pa = new PasswordAuthentication();
+            if (person != null && pa.authenticate(pwd.toCharArray(), person.getPwd())) {
+                bean = person;
+            } else {
+                errors.put("login", new RuntimeException("Aucun utilisateur avec ces paramètres de connexion"));
+            }
+        }
+        return bean;
+    }
     
 }
