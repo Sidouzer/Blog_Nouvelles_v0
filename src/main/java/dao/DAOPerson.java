@@ -79,4 +79,16 @@ public class DAOPerson extends DAO<Person>{
             Logger.getLogger(DAOPerson.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void updateStatus(Long id, int newStatus) {
+        try {
+            String req = "UPDATE " + table + " SET status=? WHERE id=?";
+            PreparedStatement pstmt = this.connection.prepareStatement(req);
+            pstmt.setInt(1, newStatus);
+            pstmt.setLong(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOPerson.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
