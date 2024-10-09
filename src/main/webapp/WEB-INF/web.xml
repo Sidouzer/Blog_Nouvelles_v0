@@ -8,4 +8,16 @@
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>stories</welcome-file>
+        <error-page>
+            <error-code>403</error-code>
+            <location>/WEB-INF/errors/error403.jsp</location>
+        </error-page>
+        <error-page>
+            <error-code>404</error-code>
+            <location>/WEB-INF/errors/error404.jsp</location>
+        </error-page>
+        <welcome-file>/WEB-INF/jsp/home.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
