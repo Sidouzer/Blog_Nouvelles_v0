@@ -5,6 +5,7 @@
 package servlets.persons;
 
 import beans.Person;
+import dao.DAOFactory;
 import dao.DAOStory;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -40,13 +41,11 @@ public class Profile extends HttpServlet {
             response.sendRedirect(
                     getServletContext().getContextPath() + "/login");
         } else {
+            //Julien
             //Récupération l'objet Person de la session
             Person person = (Person) request.getSession().getAttribute("person");
-            //Appel à la méthode listByPerson()
-            DAOStory storyDAO = new DAOStory();
-            Collection<Story> stories = storyDAO.listByPerson(person.getId());
             //Ajout de la liste des stories à la requête
-            request.setAttribute("storiesPerson", stories);
+            request.setAttribute("storiesPerson", DAOFactory.getDAOStory().listByPerson(person.getId()));
             //Transmettre la requête à la JSP
             getServletContext()
                     .getRequestDispatcher(VIEW)

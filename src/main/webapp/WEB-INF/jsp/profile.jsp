@@ -26,7 +26,7 @@
         <fieldset>
            <section id="nouvelles">
             <h2>Mes nouvelles</h2>  
-            <c:forEach items="${requestScope.storiesPerson}" var="story">
+            <c:forEach items="${requestScope.storiesPerson}" var="story">  
                 <article>
                     <h3>${story.title} ${requestScope.vote.quality}</h3>
                     <div>Nouvelle créée le ${story.created}</div>
