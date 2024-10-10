@@ -54,7 +54,7 @@ public class SignupFormChecker extends FormChecker<Person>{
                 throw new RuntimeException("Mot de passe trop court");
             }
         } catch (RuntimeException ex) {
-            errors.put("password", ex);
+            errors.put("pwd", ex);
         }
         //vérifie la concordance des pwd
         try {

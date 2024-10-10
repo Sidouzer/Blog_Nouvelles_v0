@@ -16,32 +16,37 @@
     </head>
     <body>
         <%@include file="../jspf/header.jspf" %>
+        <div class="${empty requestScope.errors ? "success" : "error"}">${requestScope.message}</div>
         <form method="post" action="<c:url value="/signup"/>">
             <fieldset>
                 <legend>Inscription</legend>
-                <label for="username">
+                <label for="name">
                     Nom d'utilisateur <span class="mandatory">*</span>
                 </label>
-                <input type="text" id="username" name="username" 
+                <input type="text" id="name" name="name" 
                        value="<c:out value="${requestScope.person.name}"/>"
                        size="20" maxlength="20" />
-                <label for="email">
+                <div class="error">${requestScope.errors.name.message}</div><br/>
+                <label for="login">
                     Adresse email <span class="mandatory" >*</span>
                 </label>
-                <input type="text" id="email" name="email" 
-                       value="<c:out value="${requestScope.bean.login}"/>"
+                <input type="text" id="login" name="login" 
+                       value="<c:out value="${requestScope.person.login}"/>"
                        size="20" maxlength="40"/>
-                <label for="password">
+                <div class="error">${requestScope.errors.login.message}</div><br/>
+                <label for="pwd">
                     Mot de passe <span class="mandatory">*</span>
                 </label>
-                <input type="password" id="password" name="password"
+                <input type="password" id="pwd" name="pwd"
                        value="" size="20" maxlength="20"/>
+                <div class="error">${requestScope.errors.pwd.message}</div><br/>
                 <label for="confirm">
                     Confirmation <span class="mandatory">*</span>
                 </label>
                 <input type="password" id="confirm" name="confirm" value=""
                        size="20" maxlength="20"/>
                 <input type="submit" value="Inscription" class="noLabel" />
+                <div class="error">${requestScope.errors.confirm.message}</div><br/>
                 <p><span class="mandatory">*</span>Champs obligatoires</p>
             </fieldset>
         </form>
