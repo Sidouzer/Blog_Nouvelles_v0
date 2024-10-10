@@ -1,3 +1,8 @@
+<%-- 
+    Created on : 9 oct. 2024
+    Author     : Julien Anglade
+--%>
+
 <%@ page pageEncoding="UTF-8" %>
         <footer>
             <p>&copy; Nouvelles de rêve</p>
