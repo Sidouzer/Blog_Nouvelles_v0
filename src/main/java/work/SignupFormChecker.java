@@ -4,10 +4,66 @@
  */
 package work;
 
+import beans.Person;
+import com.sun.jna.platform.win32.Netapi32Util.User;
+import jakarta.servlet.http.HttpServletRequest;
+import tools.PasswordAuthentication;
+
 /**
  *
  * @author stag
  */
-public class SignupFormChecker {
+public class SignupFormChecker extends FormChecker<Person>{
     
+    public SignupFormChecker(HttpServletRequest request) {
+        super(request, new Person());
+    }
+
+    @Override
+    public Person checkForm() {
+        //récupère et stock les data
+        String login = request.getParameter("login").trim();
+        String pwd = request.getParameter("pwd");
+        String confirm = request.getParameter("confirm");
+        String name = request.getParameter("name").trim();
+        PasswordAuthentication pa = new PasswordAuthentication();
+        bean.setLogin(login);
+        bean.setPwd(pa.hash(pwd.toCharArray()));
+        bean.setName(name);
+        
+        //vérification relative à la conformité du remplissage des champs
+        //vérifie la longueur du nom d'utilisateur
+        try {
+            if (name.length() < 5) {
+                throw new RuntimeException("Nom d'utilisateur trop court");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("name", ex);
+        }
+        //vérifie le login (mail)
+        try {
+            if (!login.contains("@")) {
+                throw new RuntimeException("Email invalide");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("login", ex);
+        }
+        //vérifie la longueur du pwd
+        try {
+            if (pwd.length() < 3) {
+                throw new RuntimeException("Mot de passe trop court");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("pwd", ex);
+        }
+        //vérifie la concordance des pwd
+        try {
+            if (!pwd.equals(confirm)) {
+                throw new RuntimeException("Mots de passe non concordants");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("confirm", ex);
+        }
+        return bean;
+    }
 }
