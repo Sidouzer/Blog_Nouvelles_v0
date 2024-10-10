@@ -6,6 +6,7 @@ package work;
 
 import beans.Person;
 import com.sun.jna.platform.win32.Netapi32Util.User;
+import dao.DAOFactory;
 import jakarta.servlet.http.HttpServletRequest;
 import tools.PasswordAuthentication;
 
@@ -63,6 +64,15 @@ public class SignupFormChecker extends FormChecker<Person>{
             }
         } catch (RuntimeException ex) {
             errors.put("confirm", ex);
+        }
+        //vérification de l'existance d'un utilisateur au meme login
+        try {
+            Person person = DAOFactory.getDAOPerson().findByLogin(login);
+            if (person != null) {
+                throw new RuntimeException("Mail utilisateur déjà existant");
+            }
+        } catch (RuntimeException ex) {
+            errors.put("login", ex);
         }
         return bean;
     }
