@@ -4,8 +4,8 @@
  */
 package servlets.persons;
 
+import beans.Person;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -42,5 +42,28 @@ public class Login extends HttpServlet {
                 .forward(request, response);
         }
     }
-    //doPost
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        LoginFormChecker form = new LoginFormChecker(request);
+        //vérification du compte de l'utilisateur
+        Person person = form.checkForm();
+        
+        //si pas d'erreur on ouvre la session
+        if (form.getErrors().isEmpty()) {
+            request.setAttribute("message", "Connexion réussie");
+            request.getSession().setAttribute("person", person);
+            //redirection vers la page profil d'utilisateur
+            response.sendRedirect(getServletContext().getContextPath() + "/profile");
+        } else {
+            request.setAttribute("message", "Connexion échouée : Erreurs de saisie");
+            request.getSession().invalidate();
+            request.setAttribute("errors", form.getErrors());
+            request.setAttribute("bean", person);
+            getServletContext()
+                .getRequestDispatcher(VIEW)
+                .forward(request, response);
+        }
+    }
 }
