@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Create Story</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/style.css' />" />
 </head>
 <body>
     <h2>Create a New Story</h2>
