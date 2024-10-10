@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <c:forEach items="${requestScope.persons}" 
-                           var="user">
+                           var="person">
                     <tr>
                         <td>${person.id}</td>
                         <td>${person.login}</td>
