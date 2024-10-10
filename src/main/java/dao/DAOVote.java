@@ -87,4 +87,38 @@ public class DAOVote extends DAO<Vote> {
         }
     }
 
+    public int countLikeByIdStory(Long id, int quality) {
+        int count = 0;
+        try {
+            String req = "SELECT COUNT (*) FROM" + table
+                + "WHERE id_story=? AND quality=?";
+            PreparedStatement pstmt = this.connection.prepareStatement(req);
+            pstmt.setLong(1, id);
+            pstmt.setInt(2, quality);
+            ResultSet result = pstmt.executeQuery();
+            if (result.next()) {
+                count = result.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return count;
+    }
+
+    public Vote findByQuality(int quality) {
+        Vote obj = null;
+        try {
+            String req = "SELECT * FROM " + table
+                + "WHERE quality=?";
+            PreparedStatement pstmt = this.connection.prepareStatement(req);
+            pstmt.setInt(0, quality);
+            ResultSet result = pstmt.executeQuery();
+            if (result.next()) {
+                obj = createObject(result);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOVote.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return obj;
+    }
 }

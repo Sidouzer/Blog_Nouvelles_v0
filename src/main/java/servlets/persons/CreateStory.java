@@ -7,8 +7,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import work.CreateStoryFormChecker;
+
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Map;
 
 /**
  * Servlet pour créer une nouvelle histoire.
@@ -16,32 +19,26 @@ import java.time.LocalDate;
 @WebServlet(urlPatterns = "/story/create")
 public class CreateStory extends HttpServlet {
 
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Redirige vers la page JSP de création d'une nouvelle histoire
         request.getRequestDispatcher("/WEB-INF/jsp/createStory.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Validation du formulaire
+        CreateStoryFormChecker formChecker = new CreateStoryFormChecker();
+        Map<String, String> errors = formChecker.validateForm(request);
+
+        // Si des erreurs sont présentes, on renvoie au formulaire avec les erreurs
+        if (!errors.isEmpty()) {
+            request.setAttribute("errors", errors);
+            request.getRequestDispatcher("/WEB-INF/jsp/createStory.jsp").forward(request, response);
+            return;
+        }
+
         // Récupération des paramètres du formulaire
         String title = request.getParameter("title");
         String content = request.getParameter("content");
@@ -51,13 +48,12 @@ public class CreateStory extends HttpServlet {
         story.setTitle(title);
         story.setContent(content);
         story.setCreated(LocalDate.now()); // Définit la date de création à aujourd'hui
-        story.setId_person(1L);
+        story.setId_person(1L); // Remplacez par l'ID réel de l'utilisateur connecté
 
         // Enregistrement de l'histoire dans la base de données
         DAOFactory.getDAOStory().create(story);
 
         // Redirection vers la liste des histoires après création
-        response.sendRedirect(
-                getServletContext().getContextPath() + "/home");
+        response.sendRedirect(getServletContext().getContextPath() + "/home");
     }
 }

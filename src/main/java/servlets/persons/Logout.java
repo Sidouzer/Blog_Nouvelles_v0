@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Caroline Casteras
  */
-@WebServlet(name = "Logout", urlPatterns = {"/logout"})
+@WebServlet(name = "Logout", urlPatterns = {"/person/logout"})
 public class Logout extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
