@@ -26,7 +26,7 @@
                         <th>Title</th>
                         <th>Content</th>
                         <th>Created</th>
-                        <th>Author</th>
+                        <th>Name</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
