@@ -11,7 +11,7 @@ import tools.PasswordAuthentication;
 
 /**
  *
- * @author stag
+ * @author Caroline Casteras
  */
 public class SignupFormChecker extends FormChecker<Person>{
     

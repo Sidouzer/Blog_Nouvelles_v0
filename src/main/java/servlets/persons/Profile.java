@@ -4,17 +4,18 @@
  */
 package servlets.persons;
 
+import beans.Person;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import work.ChangePasswordFormChecker;
 
 /**
  *
- * @author stag
+ * @author Caroline Casteras
  */
 @WebServlet(name = "Profile", urlPatterns = {"/profile"})
 public class Profile extends HttpServlet {
@@ -27,5 +28,36 @@ public class Profile extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    private String VIEW = "/WEB-INF/jsp/profile.jsp";
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        if (request.getSession().getAttribute("person") == null) {
+            response.sendRedirect(
+                getServletContext().getContextPath() + "/login");
+        } else {
+            getServletContext()
+                .getRequestDispatcher(VIEW)
+                .forward(request, response);
+        }
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        ChangePasswordFormChecker form = new ChangePasswordFormChecker(request);
+        Person person = form.checkForm();
+        if (form.getErrors().isEmpty()) {
+            request.setAttribute("message", "Mise à jour du mot de passe réussie");
+        } else {
+            request.setAttribute("message", "Mise à jour du mot de passe échouée : Erreurs de saisie");
+        }
+        request.setAttribute("errors", form.getErrors());
+        getServletContext()
+            .getRequestDispatcher(VIEW)
+            .forward(request, response);
+    }
     
 }
