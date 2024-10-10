@@ -1,3 +1,6 @@
+
+<%--author : Sid --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -16,6 +19,10 @@
             <div>Nouvelle écrite le ${story.created} par ${story.name}</div>
             <div>${story.content}</div>
         </section>
+        
+        <%--author : Florine Pérabout--%>
+        
+        
         
         <%@include file="../jspf/footer.jspf" %>
     </body>
