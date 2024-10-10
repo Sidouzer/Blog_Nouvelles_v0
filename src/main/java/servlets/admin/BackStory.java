@@ -20,7 +20,7 @@ public class BackStory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute(
-            "articles", DAOFactory.getDAOStory().all()
+            "stories", DAOFactory.getDAOStory().all()
         );
         getServletContext().getRequestDispatcher(VIEW)
             .forward(request, response);

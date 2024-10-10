@@ -1,5 +1,6 @@
 package beans;
 
+import dao.DAOFactory;
 import interfaces.Identifiable;
 import java.time.LocalDate;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
  * @author stag
  */
 public class Story implements Identifiable {
+
     private Long id;
     private String title;
     private String content;
@@ -54,9 +56,13 @@ public class Story implements Identifiable {
         this.id_person = id_person;
     }
 
+    public String getName() {
+        return DAOFactory.getDAOPerson().find(id_person).getName();
+    }
+
     @Override
     public String toString() {
-        return "Story{" + "id_story=" + id + ", title=" + title + ", content=" + content + ", created=" + created + ", id_person=" + id_person + '}';
+        return "Story{" + "id=" + id + ", title=" + title + ", content=" + content + ", created=" + created + ", id_person=" + id_person + '}';
     }
 
 }

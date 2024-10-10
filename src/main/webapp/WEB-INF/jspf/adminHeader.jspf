@@ -11,15 +11,15 @@
         <ul>
             <!-- Section principale -->
             <div class="nav-section left">
-                <li><a href="<c:url value="/back/home"/>">HomeAdmin</a></li>
+                <li><a href="<c:url value="/back/home"/>">Acceuil Admin</a></li>
                 <li><a href="<c:url value="/logout"/>">Se déconnecter</a></li>
             </div>
 
             <!-- Section gestion -->
             <div class="nav-section center">
                 <li><a href="<c:url value="/back/story"/>">Gérer les nouvelles</a></li>
-                <li><a href="<c:url value="/back/person"/>">Gérer les utilisateurs</a></li>
-                <li><a href="<c:url value="/back/comment"/>">Gérer les commentaires</a></li>
+                <li><a href="<c:url value="/back/persons"/>">Gérer les utilisateurs</a></li>
+                <li><a href="<c:url value="/back/comments"/>">Gérer les commentaires</a></li>
             </div>
         </ul>
     </nav>

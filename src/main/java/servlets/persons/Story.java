@@ -14,8 +14,10 @@ import java.util.Collection;
  */
 @WebServlet(urlPatterns = "/stories")
 public class Story extends HttpServlet {
+
     /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -23,7 +25,7 @@ public class Story extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         // Récupération de la liste des histoires depuis la base de données
         Collection<beans.Story> stories = DAOFactory.getDAOStory().all();
 

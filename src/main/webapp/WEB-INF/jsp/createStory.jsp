@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Story</title>
+    <title>Formulaire de création d'une nouvelle</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/style.css' />" />
 </head>
 <body>
-    <h2>Create a New Story</h2>
+    <h2>Créer une nouvelle</h2>
 
     <c:if test="${not empty errors}">
         <div class="errors">
@@ -20,15 +21,15 @@
 
     <form action="<c:url value='/story/create'/>" method="post">
         <div>
-            <label for="title">Title:</label>
+            <label for="title">Titre</label>
             <input type="text" id="title" name="title" required>
         </div>
         <div>
-            <label for="content">Content:</label>
+            <label for="content">Corps</label>
             <textarea id="content" name="content" required></textarea>
         </div>
         <div>
-            <button type="submit">Create Story</button>
+            <button type="submit">Créer la nouvelle</button>
         </div>
     </form>
 </body>
