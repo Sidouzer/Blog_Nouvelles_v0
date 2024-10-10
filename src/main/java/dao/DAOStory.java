@@ -1,15 +1,18 @@
 package dao;   //SID
 
 import beans.Story;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOStory extends DAO<Story>  {
+public class DAOStory extends DAO<Story> {
 
     // Constructeur, on passe le nom de la table en paramètre
     public DAOStory() {
@@ -38,8 +41,8 @@ public class DAOStory extends DAO<Story>  {
     public void create(Story story) {
         try {
             String req = "INSERT INTO " + table
-                + " (title, content, created, id_person)"
-                + " VALUES (?, ?, ?, ?)";
+                    + " (title, content, created, id_person)"
+                    + " VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = this.connection.prepareStatement(
                     req, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, story.getTitle());
@@ -66,8 +69,8 @@ public class DAOStory extends DAO<Story>  {
     protected void update(Story story) {
         try {
             String req = "UPDATE " + table
-                + " SET title = ?, content = ?, created = ?, id_person = ?"
-                + " WHERE id_story = ?";
+                    + " SET title = ?, content = ?, created = ?, id_person = ?"
+                    + " WHERE id_story = ?";
             PreparedStatement pstmt = this.connection.prepareStatement(req);
             pstmt.setString(1, story.getTitle());
             pstmt.setString(2, story.getContent());
@@ -81,4 +84,61 @@ public class DAOStory extends DAO<Story>  {
             Logger.getLogger(DAOStory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    // Méthode pour récupérer toutes les stories
+    public Collection<Story> all() {
+        Collection<Story> list = new ArrayList<>();
+        String sql = "SELECT * FROM " + table;
+        try (PreparedStatement pstmt = this.connection.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Story obj = createObject(rs);
+                list.add(obj);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Liste introuvable dans la table story. Erreur :\n" + ex.getMessage());
+        }
+        return list;
+    }
+
+    // Méthode pour récupérer les dernières stories
+    public Collection<Story> listLasts(int qty) {
+        ArrayList<Story> list = new ArrayList<>();
+        String sql = "SELECT * FROM " + table
+                + " ORDER BY created DESC LIMIT ?";
+        try (PreparedStatement pstmt = this.connection.prepareStatement(sql)) {
+            pstmt.setInt(1, qty);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Story obj = createObject(rs);
+                list.add(obj);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Liste introuvable dans la table story. Erreur :\n" + ex.getMessage());
+        }
+        return list;
+    }
+
+//    // Méthode pour récupérer les meilleures stories
+//    public Collection<Story> listBests(int qty) {
+//        ArrayList<Story> list = new ArrayList<>();
+////        String voteTable = "tableVOte ??";
+//        String sql = "SELECT *, SUM(code)"
+//                + " FROM " + table + " INNER JOIN " + tableVote
+//                + " ON " + table + ".id_video=" + tableVote + ".id_story"
+//                + " GROUP BY " + table + ".id_story"
+//                + " ORDER BY SUM(code) DESC LIMIT ?";
+//        try (Connection connection = MariaDbConnection.getInstance(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
+//            pstmt.setInt(1, qty);
+//            ResultSet rs = pstmt.executeQuery();
+//            while (rs.next()) {
+//                Story obj = createObject(rs);
+//                list.add(obj);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Erreur lors du listage : {0}", ex.getMessage());
+//        }
+//        return list;
+//    }
 }

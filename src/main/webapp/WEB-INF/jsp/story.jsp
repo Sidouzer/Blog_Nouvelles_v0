@@ -24,7 +24,7 @@
                 var="story">
                 <article>
                     <h3>${story.title}</h3>
-                    <div>Histoire créée le ${story.created} par ${story.authorName}</div>
+                    <div>Histoire créée le ${story.created} par ${story.name}</div>
                     <div>${story.content}</div>
                 </article>
             </c:forEach>
