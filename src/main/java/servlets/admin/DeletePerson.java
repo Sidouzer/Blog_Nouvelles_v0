@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author stag
  */
-@WebServlet(name = "DeletePerson", urlPatterns = {"/back/person/person"})
+@WebServlet(name = "DeletePerson", urlPatterns = {"/back/person/delete"})
 public class DeletePerson extends HttpServlet {
 
     /**

@@ -15,7 +15,7 @@
               href="<c:url value="/assets/css/style.css"/>" />
     </head>
     <body>
-        <%@include file="../../jspf/header.jspf" %>
+        <%@include file="../../jspf/adminHeader.jspf" %>
         <table>
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <c:forEach items="${requestScope.persons}" 
-                           var="user">
+                           var="person">
                     <tr>
                         <td>${person.id}</td>
                         <td>${person.login}</td>

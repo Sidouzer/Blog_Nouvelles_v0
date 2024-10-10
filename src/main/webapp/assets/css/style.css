@@ -14,8 +14,8 @@ header {
     background: rgba(34, 193, 195, 0.9);
     color: white;
     text-align: center;
-    padding: 40px 0;
-    font-size: 3rem;
+    padding: 10px 0;
+    font-size: 1rem;
     letter-spacing: 1.2px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -26,10 +26,10 @@ nav {
     justify-content: space-between; /* Répartit les sections horizontalement */
     align-items: flex-start; /* Aligne les éléments en haut */
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    padding: 0px;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    gap: 30px; /* Espace entre les sections */
+    gap: 10px; /* Espace entre les sections */
 }
 
 nav ul {
@@ -63,6 +63,10 @@ li {
     display: inline;
 }
 
+.mandatory {
+    color: #c00;
+}
+
 nav h2 {
     color: #34495e;
     font-size: 1rem; /* Uniformiser la taille des titres */
@@ -88,7 +92,7 @@ nav a:hover {
 
 /* Main Content */
 main {
-    max-width: 1100px;
+    max-width: 500px;
     margin: 50px auto;
     padding: 40px;
     background: white;
@@ -101,7 +105,7 @@ footer {
     background-color: #34495e;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 1rem;
     margin-top: 50px;
 }

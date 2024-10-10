@@ -11,9 +11,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Commentaires signalés</title>
+        <link type="text/css" rel="stylesheet" 
+              href="<c:url value='/assets/css/style.css' />" />
     </head>
     <body>
-        <%@include file="../jspf/header.jspf" %>
+        <%@include file="../../jspf/adminHeader.jspf" %>
         <h1>Commentaires signalés</h1>
         <c:forEach items="${requestScope.comment.status}">
             <article>
@@ -32,6 +34,6 @@
                 </c:choose>                                    
             </article>
         </c:forEach>
-        <%@include file="../jspf/footer.jspf" %>
+        <%@include file="../../jspf/footer.jspf" %>
     </body>
 </html>

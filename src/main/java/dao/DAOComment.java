@@ -82,4 +82,33 @@ public class DAOComment extends DAO<Comment> {
             Logger.getLogger(DAOComment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void updateStatus(Long id, int newStatus) {
+        try {
+            String req = "UPDATE " + table + " SET status=? WHERE id=?";
+            PreparedStatement pstmt = this.connection.prepareStatement(req);
+            pstmt.setInt(1, newStatus);
+            pstmt.setLong(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Comment findByStatus(int status) {
+        Comment obj = null;
+        try {
+            String req = "SELECT * FROM " + table
+                + "WHERE status=?";
+            PreparedStatement pstmt = this.connection.prepareStatement(req);
+            pstmt.setInt(1, status);
+            ResultSet result = pstmt.executeQuery();
+            if (result.next()) {
+                obj = createObject(result);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return obj;
+    }
 }
