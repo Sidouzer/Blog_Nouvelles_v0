@@ -15,7 +15,7 @@
               href="<c:url value="/assets/css/style.css"/>" />
     </head>
     <body>
-        <%@include file="../../jspf/header.jspf" %>
+        <%@include file="../../jspf/adminHeader.jspf" %>
         <table>
             <thead>
                 <tr>

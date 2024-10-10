@@ -13,7 +13,7 @@
         <title>Commentaires signalés</title>
     </head>
     <body>
-        <%@include file="../jspf/header.jspf" %>
+        <%@include file="../../jspf/adminHeader.jspf" %>
         <h1>Commentaires signalés</h1>
         <c:forEach items="${requestScope.comment.status}">
             <article>
