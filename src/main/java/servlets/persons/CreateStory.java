@@ -13,8 +13,23 @@ import java.time.LocalDate;
 /**
  * Servlet pour créer une nouvelle histoire.
  */
-@WebServlet(urlPatterns = "/CreateStoryServlet")
+@WebServlet(urlPatterns = "/story/create")
 public class CreateStory extends HttpServlet {
+
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        // Redirige vers la page JSP de création d'une nouvelle histoire
+        request.getRequestDispatcher("/WEB-INF/jsp/createStory.jsp").forward(request, response);
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
@@ -41,6 +56,6 @@ public class CreateStory extends HttpServlet {
 
         // Redirection vers la liste des histoires après création
         response.sendRedirect(
-            getServletContext().getContextPath() + "/back/stories");
+            getServletContext().getContextPath() + "/back/story");
     }
 }
