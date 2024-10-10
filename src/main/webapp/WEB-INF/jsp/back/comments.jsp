@@ -32,6 +32,6 @@
                 </c:choose>                                    
             </article>
         </c:forEach>
-        <%@include file="../jspf/footer.jspf" %>
+        <%@include file="../../jspf/footer.jspf" %>
     </body>
 </html>
