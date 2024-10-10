@@ -11,21 +11,28 @@
     </head>
     <body>
         <%@include file="../jspf/header.jspf" %>
+        
         <section id="homeTop3">
             <h2>Voici le top 3 des nouvelles de la semaine :</h2>
-            <!--Conditions des 3 meilleures notes et sur les 7 derniers jours à prévoir-->
-            <c:forEach items="${requestScope.story}" var="story" begin="${fn:length(requestScope.story) - 3}" end="${fn:length(requestScope.story) - 1}"> <!--pour les 3 derniers-->
+            <!-- Conditions des 3 meilleures notes sur les 7 derniers jours -->
+            <c:forEach items="${requestScope.story}" var="story" begin="${fn:length(requestScope.story) - 3}" end="${fn:length(requestScope.story) - 1}">
                 <article>
                     <h3>${story.title}</h3>
                     <div>Nouvelle écrite le ${story.created} par ${story.name}</div>
                     <div>${story.content}</div>
-                    <div>${vote.quality}</div>  <!--Quality-->
+                    <div>${vote.quality}</div>  <!-- Quality -->
                 </article>
             </c:forEach>
         </section>
-                <section id="homeStories10">
+        
+        <section id="homeStories10">
             <h2>Voici le résumé des 10 dernières nouvelles :</h2>
-  <!-- Troncature du contenu à 200 caractères -->
+            <c:forEach items="${requestScope.story}" var="story" begin="${fn:length(requestScope.story) - 10}" end="${fn:length(requestScope.story) - 1}">
+                <article>
+                    <h3>${story.title}</h3>
+                    <div>Nouvelle écrite le ${story.created} par ${story.name}</div>
+                    
+                    <!-- Troncature du contenu à 200 caractères -->
                     <div>
                         <c:choose>
                             <c:when test="${fn:length(story.content) > 200}">
@@ -38,8 +45,10 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                </article>
             </c:forEach>
         </section>
+        
         <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>
