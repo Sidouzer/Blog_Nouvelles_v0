@@ -18,6 +18,7 @@ public class CreateStory extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -25,13 +26,14 @@ public class CreateStory extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         // Redirige vers la page JSP de création d'une nouvelle histoire
         request.getRequestDispatcher("/WEB-INF/jsp/createStory.jsp").forward(request, response);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -39,7 +41,7 @@ public class CreateStory extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         // Récupération des paramètres du formulaire
         String title = request.getParameter("title");
         String content = request.getParameter("content");
@@ -56,6 +58,6 @@ public class CreateStory extends HttpServlet {
 
         // Redirection vers la liste des histoires après création
         response.sendRedirect(
-            getServletContext().getContextPath() + "/back/story");
+                getServletContext().getContextPath() + "/home");
     }
 }
