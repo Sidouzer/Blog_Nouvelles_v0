@@ -9,7 +9,7 @@
     <h1>Bienvenue sur les Nouvelles de rêve ${sessionScope.person.name}&nbsp;!</h1>
     <nav>
         <ul>
-            <li><a href="<c:url value="/home"/>">Home</a></li>
+            <li><a href="<c:url value="/home"/>">Accueil</a></li>
                 <c:choose>
                     <c:when test="${empty sessionScope.person}">
                     <!-- Section principale -->
@@ -20,7 +20,7 @@
                     </div>
                         </c:when>
                         <c:otherwise>
-                        <li><a href="<c:url value="/profile"/>">Profile</a></li>
+                        <li><a href="<c:url value="/profile"/>">Profil</a></li>
                         <li><a href="<c:url value="/person/logout"/>">Se déconnecter</a></li>
                         <li><a href="<c:url value="/story/create"/>">Ecrire une nouvelle</a></li>
                         </div>
