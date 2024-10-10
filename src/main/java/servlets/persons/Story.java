@@ -29,7 +29,7 @@ public class Story extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         // Récupération de la liste des histoires depuis la base de données
         Collection<beans.Story> stories = DAOFactory.getDAOStory().all();
         String idParam = request.getParameter("id");
