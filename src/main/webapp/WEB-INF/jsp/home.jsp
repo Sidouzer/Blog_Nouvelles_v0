@@ -19,7 +19,7 @@
         <section id="homeTop3">
             <h2>Voici le top 3 des nouvelles de la semaine :</h2>
             <!--Conditions des 3 meilleures notes et sur les 7 derniers jours à prévoir-->
-            <c:forEach items="${requestScope.Lasts}" var="story">
+            <c:forEach items="${requestScope.lasts}" var="story">
                        <!--rajouter begin et end pour les 3 derniers-->
                 <article>
                     <h3>${story.title}</h3>
@@ -32,7 +32,7 @@
                 <section id="homeStories10">
             <h2>Voici le résumé des 10 dernières nouvelles :</h2>
             <!--afficher que les 200 premiers caractères-->
-            <c:forEach items="${requestScope.Lasts}" var="story">
+            <c:forEach items="${requestScope.lats}" var="story">
                 <article>
                     <h3>${story.title}</h3>
                     <div>Nouvelle écrite le ${story.created} par ${story.name}</div>

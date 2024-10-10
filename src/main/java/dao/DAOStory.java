@@ -16,7 +16,7 @@ public class DAOStory extends DAO<Story> {
 
     // Constructeur, on passe le nom de la table en paramètre
     public DAOStory() {
-        super("stories"); // "stories" correspond à votre table dans la BDD
+        super("story"); // "story" correspond à votre table dans la BDD
     }
 
     // Méthode pour créer un objet Story à partir du ResultSet
