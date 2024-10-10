@@ -38,7 +38,7 @@
                             <td>${story.title}</td>
                             <td>${story.content}</td>
                             <td>${story.created}</td>
-                            <td>${story.authorName}</td> <!-- Affichez le nom de l'auteur -->
+                            <td>${story.name}</td> <!-- Affichez le nom de l'auteur -->
                             <td>
                                 <a href="<c:url value='/back/delete/story?id=${story.id}' />">Delete</a>
                             </td>

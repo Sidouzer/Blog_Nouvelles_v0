@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,13 +20,13 @@
         
         <section id="stories">
             <h2>Voici la liste des histoires</h2>
+            
             <c:forEach 
                 items="${requestScope.stories}" 
                 var="story">
                 <article>
                     <h3>${story.title}</h3>
-                    <div>Histoire créée le ${story.created} par ${story.authorName}</div>
-                    <div>${story.content}</div>
+                    <div>Histoire créée le ${story.created} par ${story.name}</div>
                 </article>
             </c:forEach>
         </section>

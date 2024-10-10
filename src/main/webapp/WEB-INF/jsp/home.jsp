@@ -25,14 +25,19 @@
         </section>
                 <section id="homeStories10">
             <h2>Voici le résumé des 10 dernières nouvelles :</h2>
-            <!--afficher que les 200 premiers caractères-->
-            <c:forEach items="${requestScope.story}" var="story" begin="${fn:length(requestScope.story) - 10}" end="${fn:length(requestScope.story) - 1}"> <!--pour les 3 derniers-->
-                <article>
-                    <h3>${story.title}</h3>
-                    <div>Nouvelle écrite le ${story.created} par ${story.name}</div>
-                    <div>${fn:substring(story.content, 0, 200)}</div>
-                    <div>${vote.quality}</div>  <!--Quality-->
-                </article>
+  <!-- Troncature du contenu à 200 caractères -->
+                    <div>
+                        <c:choose>
+                            <c:when test="${fn:length(story.content) > 200}">
+                                ${story.content.substring(0, 200)}... 
+                                <!-- Lien "Voir la suite" vers l'histoire complète -->
+                                <a href="<c:url value='/story?id=${story.id}' />">Voir la suite</a>
+                            </c:when>
+                            <c:otherwise>
+                                ${story.content}
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
             </c:forEach>
         </section>
         <%@include file="../jspf/footer.jspf" %>
