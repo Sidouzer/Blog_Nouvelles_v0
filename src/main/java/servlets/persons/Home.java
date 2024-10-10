@@ -4,6 +4,7 @@
  */
 package servlets.persons;
 
+import dao.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,18 +15,29 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author stag
+ * @author Julien Anglade
  */
-@WebServlet(name = "Home", urlPatterns = {"/home"})
+@WebServlet(name = "Home", urlPatterns = "/home")
 public class Home extends HttpServlet {
 
+    private final String VIEW = "/WEB-INF/jsp/home.jsp";
+
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setAttribute("home", DAOFactory.getDAOStory().all());
+        getServletContext()
+                .getRequestDispatcher(VIEW)
+                .forward(request, response);
+    }
+
 }

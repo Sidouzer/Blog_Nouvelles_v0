@@ -17,7 +17,7 @@ import tools.Utils;
 
 /**
  *
- * @author stag
+ * @author Julien Anglade
  */
 public final class MariaDbConnection {
 
