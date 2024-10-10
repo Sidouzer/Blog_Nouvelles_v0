@@ -46,13 +46,16 @@ public class LoginFormChecker extends FormChecker<Person> {
         }
         
         //vérification de l'existance d'un utilisateur : concordance du login et pwd
+        //+ verif status
         if (errors.isEmpty()) {
             Person person = DAOFactory.getDAOPerson().findByLogin(login);
             PasswordAuthentication pa = new PasswordAuthentication();
-            if (person != null && pa.authenticate(pwd.toCharArray(), person.getPwd())) {
+            if (person != null 
+                    && pa.authenticate(pwd.toCharArray(), person.getPwd())
+                    && person.getStatus() ==0) {
                 bean = person;
             } else {
-                errors.put("login", new RuntimeException("Aucun utilisateur avec ces paramètres de connexion"));
+                errors.put("login", new RuntimeException("Aucun utilisateur valide avec ces paramètres de connexion"));
             }
         }
         return bean;
