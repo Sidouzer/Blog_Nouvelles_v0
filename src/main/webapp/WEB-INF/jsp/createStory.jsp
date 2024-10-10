@@ -1,8 +1,3 @@
-<%-- 
-    Document   : createStory
-    Created on : 8 oct. 2024, 09:21:27
-    Author     : sid
---%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -10,8 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create a Short Story</title>
-        <link type="text/css" rel="stylesheet" 
-              href="<c:url value='/assets/css/style.css' />" />
+        <link type="text/css" rel="stylesheet" href="<c:url value='/assets/css/style.css' />" />
     </head>
     <body>
         <%@include file="../jspf/header.jspf" %>
@@ -20,7 +14,7 @@
             <h2>Create a New Short Story</h2>
 
             <!-- Formulaire pour créer une nouvelle histoire -->
-            <form action="<c:url value='/CreateStoryServlet' />" method="post">
+            <form action="<c:url value='/story/create' />" method="post">
                 <div class="form-group">
                     <label for="title">Title:</label>
                     <input type="text" id="title" name="title" required>

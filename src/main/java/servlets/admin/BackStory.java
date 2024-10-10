@@ -12,10 +12,10 @@ import java.io.IOException;
  *
  * @author Herbert Caffarel
  */
-@WebServlet(urlPatterns = "/back/articles")
+@WebServlet(urlPatterns = "/back/story")
 public class BackStory extends HttpServlet {
 
-    private final String VIEW = "/WEB-INF/jsp/back/articles.jsp";
+    private final String VIEW = "/WEB-INF/jsp/back/adminStories.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
