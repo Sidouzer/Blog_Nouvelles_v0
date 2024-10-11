@@ -136,12 +136,21 @@ public class DAOStory extends DAO<Story> {
         return list;
     }
 
-//    ArrayList<Story> list = new ArrayList<>();
-////        String voteTable = "tableVOte ??";
-//    String sql = "SELECT *, SUM(code)"
-//            + " FROM " + table + " INNER JOIN " + tableVote
-//            + " ON " + table + ".id_video=" + tableVote + ".id_story"
-//            + " GROUP BY " + table + ".id_story"
-//            + " ORDER BY SUM(code) DESC LIMIT ?";
-//}
+    // Méthode pour récupérer les stories d'un utilisateur
+    public Collection<Story> listByPerson(long id_person) {
+        ArrayList<Story> list = new ArrayList<>();
+        String sql = "SELECT * FROM " + table + " WHERE id=?";
+        try (PreparedStatement pstmt = this.connection.prepareStatement(sql)) {
+            pstmt.setLong(1, id_person);  // Lier l'ID de la personne à la requête
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Story obj = createObject(rs);
+                    list.add(obj);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Liste introuvable dans la table story. Erreur :\n" + ex.getMessage());
+        }
+        return list;
+    }
 }
