@@ -15,9 +15,9 @@
         <%@include file="../jspf/header.jspf" %>
         
         <section id="story">
-            <h2>${story.title}</h2>
-            <div>Nouvelle écrite le ${story.created} par ${story.name}</div>
-            <div>${story.content}</div>
+            <h2>${requestScope.story.title}</h2>
+            <div>Nouvelle écrite le ${requestSCope.story.created} par ${requestScope.story.name}</div>
+            <div>${requestScope.story.content}</div>
         </section>
         
         <%--author : Florine Pérabout
