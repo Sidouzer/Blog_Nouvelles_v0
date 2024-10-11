@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mes nouvelles</title>
+        <link type="text/css" rel="stylesheet" 
+              href="<c:url value="/assets/css/style.css"/>" />
     </head>
     <body>
         <%@include file="../jspf/header.jspf" %>

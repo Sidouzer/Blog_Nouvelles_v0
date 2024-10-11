@@ -34,7 +34,8 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("home", DAOFactory.getDAOStory().all());
+        request.setAttribute("stories3", DAOFactory.getDAOStory().listBests3());
+        request.setAttribute("stories10", DAOFactory.getDAOStory().listLasts10());
         getServletContext()
                 .getRequestDispatcher(VIEW)
                 .forward(request, response);

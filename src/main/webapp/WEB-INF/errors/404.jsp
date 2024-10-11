@@ -4,14 +4,21 @@
     Author     : stag
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ressource inconnue</title>
+        <link type="text/css" rel="stylesheet" 
+              href="<c:url value="/assets/css/style.css"/>" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="../jspf/header.jspf" %>
+        <h2>Erreur 404</h2>
+        <h3>Ressource inconnue</h3>
+        <p>Vous avez tenté d'accéder à une page qui n'existe pas !</p>
+        <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>

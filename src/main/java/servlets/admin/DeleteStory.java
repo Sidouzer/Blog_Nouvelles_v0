@@ -43,11 +43,10 @@ public class DeleteStory extends HttpServlet {
         } else {
             // Supprimer l'histoire en appelant la méthode delete du DAO
             DAOFactory.getDAOStory().delete(id);
-
             // Rediriger vers la liste des histoires après suppression
             response.sendRedirect(
                 getServletContext()
-                    .getContextPath() + "/back/stories");
+                    .getContextPath() + "/back/story");
         }
     }
 }

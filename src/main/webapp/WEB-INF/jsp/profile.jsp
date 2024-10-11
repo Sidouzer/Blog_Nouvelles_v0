@@ -10,7 +10,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Mon Profil</title>       
+        <title>Mon Profil</title>
+        <link type="text/css" rel="stylesheet" 
+              href="<c:url value="/assets/css/style.css"/>" />
     </head>
     <body>
         <%@include file="../jspf/header.jspf" %>
@@ -23,15 +25,15 @@
         
         <fieldset>
            <section id="nouvelles">
-            <h2>Mes nouvelles</h2>
-            <c:forEach 
-                items="${requestScope.story.id_person}" var="nouvelle">
+            <h2>Mes nouvelles</h2>  
+            <c:forEach items="${requestScope.storiesPerson}" var="story">  
                 <article>
                     <h3>${story.title} ${requestScope.vote.quality}</h3>
-                    <div>Nouvelle créé le ${story.created}</div>
+                    <div>Nouvelle créée le ${story.created}</div>
+                    <p>${story.content}</p>
                 </article>
-                <a href="<c:url value='/personStories'>"> Toutes mes nouvelles</a> 
-            </c:forEach>                     
+                <a href="<c:url value='/personStories'/>">Toutes mes nouvelles</a> 
+            </c:forEach>
         </section> 
         </fieldset>
                   
@@ -53,11 +55,9 @@
                 <input type="submit" value="Modifier" class="noLabel" />
             </fieldset>
         </form>
-                
         <fieldset>
-            <button type="submit" value="Supprimer mon compte"> Supprimer </button>
+            <a href="<c:url value="/person/disable?id=${person.id}" />">Me désinscrire</a>
         </fieldset>
-               
         <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>

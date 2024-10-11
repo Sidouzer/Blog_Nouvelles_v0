@@ -4,17 +4,21 @@
  */
 package servlets.persons;
 
+import beans.Person;
+import dao.DAOFactory;
+import dao.DAOStory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Collection;
+import work.ChangePasswordFormChecker;
 
 /**
  *
- * @author stag
+ * @author Caroline Casteras
  */
 @WebServlet(name = "Profile", urlPatterns = {"/profile"})
 public class Profile extends HttpServlet {
@@ -28,60 +32,41 @@ public class Profile extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Profile</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Profile at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+    private String VIEW = "/WEB-INF/jsp/profile.jsp";
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (request.getSession().getAttribute("person") == null) {
+            response.sendRedirect(
+                    getServletContext().getContextPath() + "/login");
+        } else {
+            //Julien
+            //Récupération l'objet Person de la session
+            Person person = (Person) request.getSession().getAttribute("person");
+            //Ajout de la liste des stories à la requête
+            request.setAttribute("storiesPerson", DAOFactory.getDAOStory().listByPerson(person.getId()));
+            //Transmettre la requête à la JSP
+            getServletContext()
+                    .getRequestDispatcher(VIEW)
+                    .forward(request, response);
+        }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ChangePasswordFormChecker form = new ChangePasswordFormChecker(request);
+        Person person = form.checkForm();
+        if (form.getErrors().isEmpty()) {
+            request.setAttribute("message", "Mise à jour du mot de passe réussie");
+        } else {
+            request.setAttribute("message", "Mise à jour du mot de passe échouée : Erreurs de saisie");
+        }
+        request.setAttribute("errors", form.getErrors());
+        getServletContext()
+                .getRequestDispatcher(VIEW)
+                .forward(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
