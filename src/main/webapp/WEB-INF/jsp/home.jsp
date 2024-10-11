@@ -29,7 +29,7 @@
                     <div class="texte-italique-petit">Nouvelle écrite le ${story.created} 
                         par ${story.name}</div>
                     <div class="texte-content-petit">${story.content}</div>
-                    <div><a href=""<c:url value="/story?id=${story.id}"/>"">Lire la suite</a></div>
+                    <div><a href="<c:url value="/story?id=${story.id}"/>">Lire la suite</a></div>
                 </article>
             </c:forEach>
             </div>

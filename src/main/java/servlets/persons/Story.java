@@ -14,7 +14,7 @@ import java.util.Collection;
  * authors: Sid et Florine
  *
  */
-@WebServlet(urlPatterns = "/stories")
+@WebServlet(urlPatterns = "/story")
 public class Story extends HttpServlet {
     Long id;
     int quality;
@@ -34,12 +34,17 @@ public class Story extends HttpServlet {
         // Récupération de la liste des histoires depuis la base de données
         Collection<beans.Story> stories = DAOFactory.getDAOStory().all();
         String idParam = request.getParameter("id");
+        
         try {
             id = Long.valueOf(idParam);
         } catch (NumberFormatException ex) {
             id = null;
         }
+        
         if (id != null) {
+            request.setAttribute(
+                "id",
+                DAOFactory.getDAOStory().find(id));
             request.setAttribute(
                 "quality",
                 DAOFactory.getDAOVote().findByQuality(0));

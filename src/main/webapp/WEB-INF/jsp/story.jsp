@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${story.title}</title>
+        <title>${requestScope.id.title}</title>
         <link type="text/css" rel="stylesheet" 
               href="<c:url value="/assets/css/style.css"/>" />
     </head>
@@ -15,9 +15,9 @@
         <%@include file="../jspf/header.jspf" %>
         
         <section id="story">
-            <h2>${story.title}</h2>
-            <div>Nouvelle écrite le ${story.created} par ${story.name}</div>
-            <div>${story.content}</div>
+            <h2>${requestScope.id.title}</h2>
+            <div>Nouvelle écrite le ${requestScope.id.created} par ${requestScope.id.name}</div>
+            <div>${requestScope.id.content}</div>
         </section>
         
         <%--author : Florine Pérabout

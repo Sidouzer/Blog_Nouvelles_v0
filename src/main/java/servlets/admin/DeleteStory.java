@@ -46,7 +46,7 @@ public class DeleteStory extends HttpServlet {
             // Rediriger vers la liste des histoires après suppression
             response.sendRedirect(
                 getServletContext()
-                    .getContextPath() + "/back/stories");
+                    .getContextPath() + "/back/story");
         }
     }
 }

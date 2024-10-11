@@ -18,11 +18,11 @@
         <%@include file="../../jspf/adminHeader.jspf" %>
         
         <section id="admin-stories">
-            <h2>Manage Short Stories</h2>
+            <h2>Gestion des nouvelles</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>Id</th>
                         <th>Title</th>
                         <th>Content</th>
                         <th>Created</th>
