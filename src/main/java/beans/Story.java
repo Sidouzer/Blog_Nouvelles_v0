@@ -18,7 +18,7 @@ public class Story implements Identifiable {
         return id;
     }
 
-    public void setId(Long id_story) {
+    public void setId(Long id) {
         this.id = id;
     }
 

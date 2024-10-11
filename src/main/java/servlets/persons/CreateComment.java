@@ -4,6 +4,8 @@
  */
 package servlets.persons;
 
+import beans.Comment;
+import dao.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,77 +13,61 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import work.CreateCommentFormChecker;
 
 /**
  *
- * @author stag
+ * @author Florine Pérabout
  */
 @WebServlet(name = "CreateComment", urlPatterns = {"/comment/create"})
 public class CreateComment extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CreateComment</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CreateComment at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+    Long id;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private final String VIEW = "/WEB-INF/jsp/story.jsp";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        throws ServletException, IOException {
+        String idParam = request.getParameter("id");
+        try {
+            id = Long.valueOf(idParam);
+        } catch (NumberFormatException ex) {
+            id = null;
+        }
+        if (id != null) {
+            request.setAttribute(
+                "comment",
+                DAOFactory.getDAOComment().find(id));
+        }
+        getServletContext().getRequestDispatcher(VIEW)
+            .forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        throws ServletException, IOException {
+        String idParam = request.getParameter("id");
+        try {
+            id = Long.valueOf(idParam);
+        } catch (NumberFormatException ex) {
+            id = null;
+        }
+        CreateCommentFormChecker checker = new CreateCommentFormChecker(request);
+        Comment comment = checker.checkForm();
+        comment.setId(id);
+        if (checker.getErrors().isEmpty()) {
+            DAOFactory.getDAOComment().persist(comment);
+            response.sendRedirect(
+                getServletContext().getContextPath() + "/story");
+        } else {
+            request.setAttribute("msg", "Votre commentaire contient des erreurs");
+            request.setAttribute("errors", checker.getErrors());
+            request.setAttribute("comment", comment);
+            getServletContext()
+                .getRequestDispatcher(VIEW)
+                .forward(request, response);
+        }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
+

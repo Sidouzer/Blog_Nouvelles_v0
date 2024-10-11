@@ -19,6 +19,7 @@ import java.util.Collection;
 public class Story extends HttpServlet {
     Long id;
     int quality;
+    private final String VIEW = "/WEB-INF/jsp/story.jsp";
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -52,12 +53,11 @@ public class Story extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        throws ServletException, IOException {
+        //throws ServletException, IOException {
         //je veux que mon dopost renvoi mon vote.quality dans countLikeByIdStory
         // mon countLikeByIdStory enregiste le nombre de votes
         //il prend le nombre de Like(quality 1) et divise le nb de Like par le nb de votes
-        int totalLikes = DAOVote.countLikeByIdStory(id, quality);
+        int totalLikes = DAOFactory.getDAOVote().countLikeByIdStory(id, quality);
 
         }
     }
-}
