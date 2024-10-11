@@ -18,29 +18,21 @@ import java.util.Collection;
 public class Story extends HttpServlet {
     Long id;
     int quality;
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     private final String VIEW = "/WEB-INF/jsp/story.jsp";
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Récupération de la liste des histoires depuis la base de données
         Collection<beans.Story> stories = DAOFactory.getDAOStory().all();
         String idParam = request.getParameter("id");
-        
+
         try {
             id = Long.valueOf(idParam);
         } catch (NumberFormatException ex) {
             id = null;
         }
-        
+
         if (id != null) {
             request.setAttribute(
                 "id",

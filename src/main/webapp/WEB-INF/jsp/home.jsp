@@ -53,7 +53,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     ${story.content}
-                                    <div><a href=""<c:url value="/story?id=${story.id}"/>"">Lire la suite</a></div>
+                                    <div><a href="<c:url value="/story?id=${story.id}"/>">Lire la suite</a></div>
                                 </c:otherwise>
                             </c:choose>
                         </div>
