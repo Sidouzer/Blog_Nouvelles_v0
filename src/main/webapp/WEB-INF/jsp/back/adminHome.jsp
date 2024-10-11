@@ -15,7 +15,7 @@
               href="<c:url value="/assets/css/style.css"/>" />
     </head>
     <body>
-        <%@include file="../jspf/adminHeader.jspf" %>
+        <%@include file="../../jspf/adminHeader.jspf" %>
         <section id="homeAdmin">
             <h2>Bienvenue (${sessionScope.person.name})</h2>
             <h3>Choisis une action :</h3>

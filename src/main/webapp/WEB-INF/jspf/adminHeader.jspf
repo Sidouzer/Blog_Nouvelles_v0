@@ -11,10 +11,9 @@
         <ul>
             <!-- Section principale -->
             <div class="nav-section left">
-                <li><a href="<c:url value="/back/home"/>">Acceuil Admin</a></li>
-                <li><a href="<c:url value="/logout"/>">Se déconnecter</a></li>
+                <li><a href="<c:url value="/back/home"/>">Accueil Admin</a></li>
+                <li><a href="<c:url value="/person/logout"/>">Se déconnecter</a></li>
             </div>
-
             <!-- Section gestion -->
             <div class="nav-section center">
                 <li><a href="<c:url value="/back/story"/>">Gérer les nouvelles</a></li>
