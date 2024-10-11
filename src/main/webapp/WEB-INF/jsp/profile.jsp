@@ -26,10 +26,11 @@
         <fieldset>
            <section id="nouvelles">
             <h2>Mes nouvelles</h2>  
-            <c:forEach items="${requestScope.story.id_person}" var="nouvelle">
+            <c:forEach items="${requestScope.storiesPerson}" var="story">  
                 <article>
                     <h3>${story.title} ${requestScope.vote.quality}</h3>
                     <div>Nouvelle créée le ${story.created}</div>
+                    <p>${story.content}</p>
                 </article>
                 <a href="<c:url value='/personStories'/>">Toutes mes nouvelles</a> 
             </c:forEach>
