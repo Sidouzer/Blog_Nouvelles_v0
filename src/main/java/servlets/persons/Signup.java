@@ -55,6 +55,8 @@ public class Signup extends HttpServlet {
             request.setAttribute("message", "Inscription réussie");
             DAOFactory.getDAOPerson().persist(person);
             request.getSession().setAttribute("person", person);
+            //redirection vers la page profil d'utilisateur
+            response.sendRedirect(getServletContext().getContextPath() + "/profile");
         } else {
             request.setAttribute("message", "Inscription échouée : Erreurs de saisie");
         }

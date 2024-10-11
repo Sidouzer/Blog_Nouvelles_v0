@@ -10,15 +10,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import work.CreateStoryFormChecker;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Map;
 
 /**
  * Servlet pour créer une nouvelle histoire.
+ * @author Sid révisé par Caroline Casteras
  */
 @WebServlet(urlPatterns = "/story/create")
 public class CreateStory extends HttpServlet {
-
+    Long id;
+    private final String VIEW = "/WEB-INF/jsp/createStory.jsp";
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,31 +30,31 @@ public class CreateStory extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Validation du formulaire
-        CreateStoryFormChecker formChecker = new CreateStoryFormChecker();
-        Map<String, String> errors = formChecker.validateForm(request);
+        CreateStoryFormChecker form = new CreateStoryFormChecker(request);
+        Story story = form.checkForm();
 
-        // Si des erreurs sont présentes, on renvoie au formulaire avec les erreurs
-        if (!errors.isEmpty()) {
-            request.setAttribute("errors", errors);
-            request.getRequestDispatcher("/WEB-INF/jsp/createStory.jsp").forward(request, response);
-            return;
+        //Récupération de l'id
+        String idParam = request.getParameter("id");
+        try {
+            id = Long.valueOf(idParam);
+        } catch (NumberFormatException ex) {
+            id = null;
         }
-
-        // Récupération des paramètres du formulaire
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-
-        // Création d'une nouvelle instance de Story
-        Story story = new Story();
-        story.setTitle(title);
-        story.setContent(content);
-        story.setCreated(LocalDate.now()); // Définit la date de création à aujourd'hui
-        story.setId_person(1L); // Remplacez par l'ID réel de l'utilisateur connecté
-
-        // Enregistrement de l'histoire dans la base de données
-        DAOFactory.getDAOStory().create(story);
-
-        // Redirection vers la liste des histoires après création
-        response.sendRedirect(getServletContext().getContextPath() + "/home");
+        story.setId(id);
+        if (form.getErrors().isEmpty()) {
+            // Enregistrement de l'histoire dans la base de données
+            DAOFactory.getDAOStory().create(story);
+            // Redirection vers la liste des histoires après création
+            response.sendRedirect(
+                getServletContext().getContextPath() + "/home");
+        } else {
+            request.setAttribute("message", "Votre formulaire contient des erreurs");
+            request.setAttribute("errors", form.getErrors());
+            request.setAttribute("story", story);
+            // Si des erreurs sont présentes, on renvoie au formulaire avec les erreurs
+            getServletContext()
+                .getRequestDispatcher(VIEW)
+                .forward(request, response);
+        }
     }
 }

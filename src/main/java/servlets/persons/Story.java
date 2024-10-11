@@ -2,7 +2,6 @@ package servlets.persons;
 
 import dao.DAOFactory;
 import dao.DAOVote;
-import jakarta.faces.application.ViewVisitOption;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,6 +26,8 @@ public class Story extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private final String VIEW = "/WEB-INF/jsp/story.jsp";
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,14 +51,14 @@ public class Story extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/jsp/story.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        throws ServletException, IOException {
-        //je veux que mon dopost renvoi mon vote.quality dans countLikeByIdStory
-        // mon countLikeByIdStory enregiste le nombre de votes
-        //il prend le nombre de Like(quality 1) et divise le nb de Like par le nb de votes
-        int totalLikes = DAOVote.countLikeByIdStory(id, quality);
-
-        }
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+//        throws ServletException, IOException {
+//        //je veux que mon dopost renvoi mon vote.quality dans countLikeByIdStory
+//        // mon countLikeByIdStory enregiste le nombre de votes
+//        //il prend le nombre de Like(quality 1) et divise le nb de Like par le nb de votes
+//        int totalLikes = DAOFactory.getDAOVote().countLikeByIdStory(id, 0);
+//        int totalVotes = DAOFactory.getDAOVote().count();
+//        }
+//    }
 }
