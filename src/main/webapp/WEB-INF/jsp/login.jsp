@@ -15,32 +15,34 @@
     </head>
     <body>
         <%@include file="../jspf/header.jspf" %>
-        <form method="post" action="<c:url value="/login"/>">
-            <fieldset>
-                <legend>Connexion</legend>
-                <div class="${empty requestScope.errors ? "success" : "error"}">${requestScope.message}</div>
-                <label for="login">
-                    Adresse email
-                    <span class="mandatory" >*</span>
-                </label>
-                <input type="text" id="login" name="login" 
-                       value="<c:out value="${requestScope.person.login}"/>"
-                       size="20" maxlength="40"/>
-                <div class="error">${requestScope.errors.login.message}</div><br/>
-                <label for="pwd">
-                    Mot de passe 
-                    <span class="mandatory">*</span>
-                </label>
-                <input type="password" id="pwd" name="pwd"
-                       value="" size="20" maxlength="20"/>
-                <input type="submit" value="Connexion" class="noLabel"/>
-                <div class="error">${requestScope.errors.pwd.message}</div><br/>
-                <p>
-                    <span class="mandatory">*</span>
-                    Champs obligatoires
-                </p>
-            </fieldset>
-        </form>
+        <main>
+            <form method="post" action="<c:url value="/login"/>">
+                <fieldset>
+                    <legend>Connexion</legend>
+                    <div class="${empty requestScope.errors ? "success" : "error"}">${requestScope.message}</div>
+                    <label for="login">
+                        Adresse email
+                        <span class="mandatory" >*</span>
+                    </label>
+                    <input type="text" id="login" name="login" 
+                           value="<c:out value="${requestScope.person.login}"/>"
+                           size="20" maxlength="40"/>
+                    <div class="error">${requestScope.errors.login.message}</div><br/>
+                    <label for="pwd">
+                        Mot de passe 
+                        <span class="mandatory">*</span>
+                    </label>
+                    <input type="password" id="pwd" name="pwd"
+                           value="" size="20" maxlength="20"/>
+                    <input type="submit" value="Connexion" class="noLabel"/>
+                    <div class="error">${requestScope.errors.pwd.message}</div><br/>
+                    <p>
+                        <span class="mandatory">*</span>
+                        Champs obligatoires
+                    </p>
+                </fieldset>
+            </form>
+        </main>
         <%@include file="../jspf/footer.jspf" %>
     </body>
 </html>

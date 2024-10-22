@@ -1,17 +1,27 @@
-/*Julien Anglade*/
-
+/*
+Palette
+#211A44
+#5C5792
+#9F8DC3 #78659e
+#BE9CC7
+#E3BAD5
+*/
 /* Global Styling */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    background: linear-gradient(135deg, #f7ebf3, #E3BAD5);
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #78659e;
 }
 
 /* Header Styling */
 header {
-    background: rgba(34, 193, 195, 0.9);
+    background: white;
+    background-image: url('../icons/nuage-header.webp'); /* Lien vers l'image */
+    background-size: cover; /* Adapte l'image à la taille du header */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -25,7 +35,7 @@ nav {
     display: flex;
     justify-content: space-between; /* Répartit les sections horizontalement */
     align-items: flex-start; /* Aligne les éléments en haut */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 0px;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -41,22 +51,11 @@ nav ul {
     justify-content: space-between; /* Séparer les sections */
 }
 
+/*Positionnement boutons barre de navigation */
 .nav-section.left {
     display: flex;
     gap: 20px;
-    justify-content: flex-start; /* Alignement à gauche */
-}
-
-.nav-section.center {
-    display: flex;
-    gap: 20px;
-    justify-content: center; /* Alignement au centre */
-}
-
-.nav-section right {
-    display: flex;
-    gap: 20px;
-    margin-left: auto; /* Cela pousse la section à droite */
+    justify-content: flex-start; 
 }
 
 li {
@@ -68,7 +67,7 @@ li {
 }
 
 nav h2 {
-    color: #34495e;
+    color: #78659e;
     font-size: 1rem; /* Uniformiser la taille des titres */
     margin-bottom: 10px;
     font-weight: bold;
@@ -76,7 +75,7 @@ nav h2 {
 
 nav a {
     display: block;
-    color: #34495e;
+    color: #78659e;
     text-decoration: none;
     font-size: 1rem;
     margin: 5px 0;
@@ -85,25 +84,32 @@ nav a {
     border-radius: 50px;
 }
 
+/*navigation bouton quand appuyé*/
 nav a:hover {
-    background-color: #2ecc71;
+    background-color: #9F8DC3;
     color: white;
 }
 
 /* Main Content */
-main {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 40px;
+section {
+    width: 90%; /* Largeur relative pour le rendre responsive */
+    max-width: 1200px; /* Largeur maximale */
+    margin: 40px auto;
+    padding: 20px;
     background: white;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Footer Styling */
 footer {
-    background-color: #34495e;
-    color: white;
+    background-color: #BE9CC7;
+    background-image: url('../icons/nuage-header.webp'); /* Lien vers l'image */
+    background-size: cover; /* Adapte l'image à la taille du header */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    color: #5C5792;
     text-align: center;
     padding: 10px 0;
     font-size: 1rem;

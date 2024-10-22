@@ -4,6 +4,6 @@
 --%>
 
 <%@ page pageEncoding="UTF-8" %>
-        <footer>
-            <p>&copy; Nouvelles de rêve</p>
-        </footer>
+<footer>
+    <p>&copy; Nouvelles de rêve</p>
+</footer>

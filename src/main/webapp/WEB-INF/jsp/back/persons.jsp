@@ -16,29 +16,31 @@
     </head>
     <body>
         <%@include file="../../jspf/adminHeader.jspf" %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Login</th>
-                    <th>Name</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${requestScope.persons}" 
-                           var="person">
+        <main>
+            <table>
+                <thead>
                     <tr>
-                        <td>${person.id}</td>
-                        <td>${person.login}</td>
-                        <td>${person.name}</td>
-                        <td>${person.status}</td>
-                        <td><a href="<c:url value="/back/person/delete?id=${person.id}" />">Supprimer</a></td>
+                        <th>Id</th>
+                        <th>Login</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <c:forEach items="${requestScope.persons}" 
+                               var="person">
+                        <tr>
+                            <td>${person.id}</td>
+                            <td>${person.login}</td>
+                            <td>${person.name}</td>
+                            <td>${person.status}</td>
+                            <td><a href="<c:url value="/back/person/delete?id=${person.id}" />">Supprimer</a></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </main>
         <%@include file="../../jspf/footer.jspf" %>
     </body>
 </html>
