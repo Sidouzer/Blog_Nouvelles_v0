@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 /**
  *
- * @author Sid révisé par Caroline Casteras
+ * @author Sid
  */
 public class CreateStoryFormChecker extends FormChecker<Story>{
 

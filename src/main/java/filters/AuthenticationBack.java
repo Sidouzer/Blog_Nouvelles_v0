@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package filters;
 
 import beans.Person;
@@ -16,10 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- *
- * @author Anglade Julien
- */
 @WebFilter(urlPatterns = "/back/*")
 public class AuthenticationBack implements Filter {
 

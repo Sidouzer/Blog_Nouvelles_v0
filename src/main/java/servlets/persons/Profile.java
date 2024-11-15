@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.persons;
 
 import beans.Person;
@@ -16,10 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.Collection;
 import work.ChangePasswordFormChecker;
 
-/**
- *
- * @author Caroline Casteras
- */
 @WebServlet(name = "Profile", urlPatterns = {"/profile"})
 public class Profile extends HttpServlet {
 

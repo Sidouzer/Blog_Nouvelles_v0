@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * Servlet pour créer une nouvelle histoire.
- * @author Sid révisé par Caroline Casteras
+ * @author Sid
  */
 @WebServlet(urlPatterns = "/story/create")
 public class CreateStory extends HttpServlet {

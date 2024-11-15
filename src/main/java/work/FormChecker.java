@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package work;
 
 import interfaces.Identifiable;
@@ -9,10 +5,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Caroline Casteras
- */
 public abstract class FormChecker <T extends Identifiable> {
     
     protected Map<String, RuntimeException> errors;

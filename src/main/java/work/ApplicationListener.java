@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package work;
 
 import dao.MariaDbConnection;
@@ -9,10 +5,6 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 
-/**
- *
- * @author Caroline Casteras
- */
 @WebListener
 public class ApplicationListener implements ServletContextListener {
 

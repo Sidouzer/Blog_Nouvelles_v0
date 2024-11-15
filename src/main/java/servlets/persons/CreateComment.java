@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package servlets.persons;
 
 import beans.Comment;
@@ -15,10 +11,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import work.CreateCommentFormChecker;
 
-/**
- *
- * @author Florine Pérabout
- */
 @WebServlet(name = "CreateComment", urlPatterns = {"/comment/create"})
 public class CreateComment extends HttpServlet {
 

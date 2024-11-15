@@ -8,10 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- *
- * @author Herbert Caffarel
- */
 @WebServlet(urlPatterns = "/back/story")
 public class BackStory extends HttpServlet {
 

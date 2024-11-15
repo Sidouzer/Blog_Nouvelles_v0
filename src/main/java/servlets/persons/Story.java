@@ -10,10 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 
-/**
- * authors: Sid et Florine
- *
- */
 @WebServlet(urlPatterns = "/story")
 public class Story extends HttpServlet {
     Long id;

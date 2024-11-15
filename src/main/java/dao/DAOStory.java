@@ -1,4 +1,4 @@
-package dao;   //SID
+package dao;
 
 import beans.Story;
 import java.sql.Connection;
